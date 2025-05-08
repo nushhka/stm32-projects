@@ -1,0 +1,146 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.39.0.0
+Copyright (C) 2023 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Anushka D, IITJ, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.39.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.21
+Assembler:       Armasm.exe V6.21
+Linker/Locator:  ArmLink.exe V6.21
+Library Manager: ArmAr.exe V6.21
+Hex Converter:   FromElf.exe V6.21
+CPU DLL:         SARMCM3.DLL V5.39.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.2.0.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+C:\Users\Anushka\OneDrive\Desktop\Embedded\Hardware_vsslr\Ultrasonic\us.uvprojx
+Project File Date:  03/04/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+uart.c(1): warning: ISO C requires a translation unit to contain at least one declaration [-Wempty-translation-unit]
+1 warning generated.
+compiling uart.c...
+RTE/Device/STM32F412ZGTx/system_stm32f4xx.c(49): warning: In file included from...
+C:/Users/Anushka/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   11 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/Anushka/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   12 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+RTE/Device/STM32F412ZGTx/system_stm32f4xx.c(264): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  264 |   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+      |         ^~~~~~~~~~~~~
+3 warnings generated.
+compiling system_stm32f4xx.c...
+assembling startup_stm32f412zx.s...
+ultrasonic.c(1): warning: In file included from...
+C:/Users/Anushka/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(11): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   11 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/Anushka/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include\stm32f4xx.h(12): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   12 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+ultrasonic.c(2): warning: In file included from...
+./uart.h(36): warning: implicit conversion loses integer precision: 'volatile uint32_t' (aka 'volatile unsigned int') to 'char' [-Wimplicit-int-conversion]
+   36 |     return USART3->DR;
+      |     ~~~~~~ ~~~~~~~~^~
+ultrasonic.c(13): warning: no previous extern declaration for non-static variable 'pulse_width' [-Wmissing-variable-declarations]
+   13 | volatile uint32_t pulse_width = 0;  // Global variable for debugging
+      |                   ^
+ultrasonic.c(13): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   13 | volatile uint32_t pulse_width = 0;  // Global variable for debugging
+      |          ^
+ultrasonic.c(17): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   17 |     TIM2->PSC = 16 - 1;  // Prescaler for 1 MHz timer (1<B5>s per tick)
+      |                                                         ^
+ultrasonic.c(34): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   34 |     GPIOA->MODER &= ~(3 << (ECHO_PIN * 2));
+      |                  ~~ ^~~~~~~~~~~~~~~~~~~~~~
+ultrasonic.c(40): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   40 |     SYSCFG->EXTICR[1] &= ~(0xF << 12);
+      |                       ~~ ^~~~~~~~~~~~
+ultrasonic.c(47): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   47 |     // Send 10<B5>s pulse
+      |               ^
+ultrasonic.c(50): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   50 |     GPIOA->ODR &= ~(1 << TRIG_PIN);
+      |                ~~ ^~~~~~~~~~~~~~~~
+ultrasonic.c(66): warning: implicit conversion turns floating-point number into integer: 'double' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
+   66 |     return (pulse_counter * 0.0343) / 2;
+      |     ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+ultrasonic.c(79): warning: format specifies type 'unsigned long' but the argument has type 'uint32_t' (aka 'unsigned int') [-Wformat]
+   79 |         sprintf(buffer, "Distance: %lu cm\r\n", distance);
+      |                                    ~~~          ^~~~~~~~
+      |                                    %u
+ultrasonic.c(2): warning: In file included from...
+./uart.h(15): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   15 |     GPIOD->AFR[1] |= 0x00000077; // Set alternate function to AF7 (USART3)
+      |     ^~~~~~~~~~
+C:/Users/Anushka/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f412zx.h(1030): note: expanded from macro 'GPIOD'
+ 1030 | #define GPIOD               ((GPIO_TypeDef *) GPIOD_BASE)
+      |                             ^
+ultrasonic.c(2): warning: In file included from...
+./uart.h(30): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   30 |         UART3_SendChar(*str++);
+      |                         ^~~
+ultrasonic.c(40): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   40 |     SYSCFG->EXTICR[1] &= ~(0xF << 12);
+      |     ^~~~~~~~~~~~~~
+C:/Users/Anushka/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f412zx.h(1015): note: expanded from macro 'SYSCFG'
+ 1015 | #define SYSCFG              ((SYSCFG_TypeDef *) SYSCFG_BASE)
+      |                             ^
+ultrasonic.c(41): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   41 |     SYSCFG->EXTICR[1] |= (0 << 12);
+      |     ^~~~~~~~~~~~~~
+C:/Users/Anushka/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f412zx.h(1015): note: expanded from macro 'SYSCFG'
+ 1015 | #define SYSCFG              ((SYSCFG_TypeDef *) SYSCFG_BASE)
+      |                             ^
+15 warnings generated.
+compiling ultrasonic.c...
+linking...
+Program Size: Code=8848 RO-data=1040 RW-data=0 ZI-data=1640  
+".\Objects\us.axf" - 0 Error(s), 19 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM::CMSIS@5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.16.0.pack
+                Keil::STM32F4xx_DFP@2.16.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/Anushka/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/Anushka/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@5.6.0
+
+   * Component: Keil::Device:Startup@2.6.3
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   MDK/Device/Source/ARM/STM32F410xx_412xx_OPT.s
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f412zx.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
